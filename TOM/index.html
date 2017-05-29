@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0 ,maximum-scale=1.0 ,user-scale=1.0"/>
+		<title>汤姆猫咪</title>
+		<style type="text/css">
+			#cat{
+				width: 100%;
+				height: 100%;
+			}
+			img{
+				position: absolute;
+			}
+			#cymbal{
+				left:50px;
+				bottom: 150px;
+			}
+			#drink{
+				left: 50px;
+				bottom: 100px;
+			}
+			#eat{
+				left: 50px;
+				bottom: 50px;
+			}
+			#fart{
+				right: 50px;
+				bottom: 150px;
+			}
+			#pie{
+				right: 50px;
+				bottom: 100px;
+			}
+			#scratch{
+				right: 50px;
+				bottom: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/animations/angry/angry_00.jpg" id="cat"/>
+		<img src="img/buttons/cymbal/cymbal.png" id="cymbal"/>
+		<img src="img/buttons/drink/drink.png"/ id="drink">
+		<img src="img/buttons/eat/eat.png"/ id="eat">
+		<img src="img/buttons/fart/fart.png"/ id="fart">
+		<img src="img/buttons/pie/pie.png"/ id="pie">
+		<img src="img/buttons/scratch/scratch.png" id="scratch"/>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.getElementById("cymbal").onclick=function(){
+					startAnim("cymbal",13);
+				}
+				document.getElementById("drink").onclick=function(){
+					startAnim("drink",81);
+					
+				}
+				document.getElementById("eat").onclick=function(){
+					startAnim("eat",40);
+					
+				}
+				document.getElementById("fart").onclick=function(){
+					startAnim("fart",28);
+					
+				}
+				document.getElementById("pie").onclick=function(){
+					startAnim("pie",24);
+					
+				}
+				document.getElementById("scratch").onclick=function(){
+					startAnim("scratch",56);
+					
+				}
+			}
+			var time =0;
+			function startAnim(name,count){
+				clearInterval(time);
+				var img=document.getElementById("cat");
+				var index=0;
+				time = setInterval (function(){
+					if(index<count){
+						img.src=getImgPath(name,index);
+						index++;
+					}else{
+						clearInterval(time);
+					}
+				},50);
+			}
+			function getImgPath(name,index){
+				return "./img/animations/" + name +"/" +name + "_" + getIndex(index) +".jpg";
+			}
+			function getIndex(index){
+				if(index<10){
+					return "0"+index;
+				}else{
+					return index;
+				}
+			}
+		</script>
+	</body>
+</html>
